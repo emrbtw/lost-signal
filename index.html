@@ -1,73 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
   <title>LOST SIGNAL // 01</title>
+
+  <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-  <h1>LOST SIGNAL // 01</h1>
+  <div class="terminal">
 
-  <p>
-    At 03:17, the system received a corrupted transmission
-    from an unknown source.
-  </p>
+    <h1>LOST SIGNAL // 01</h1>
 
-  <pre>
+    <p>
+      At 03:17, the system received a corrupted transmission
+      from an unknown source.
+    </p>
+
+    <pre>
 19 9 7 14 1 12
-  </pre>
+    </pre>
 
-  <p>
-    Hint: The numbers are not letters.
-    But they can become letters.
-  </p>
+    <p>
+      Hint: The numbers are not letters.
+      But they can become letters.
+    </p>
 
-  <input id="answer" placeholder="Enter answer">
-  <button onclick="checkAnswer()">Submit</button>
+    <input id="answer" placeholder="Enter answer">
 
-  <p id="result"></p>
+    <button onclick="checkAnswer('puzzle1', 'puzzle2.html')">
+      Submit
+    </button>
 
-  <script>
-    async function checkAnswer() {
+    <p id="result"></p>
 
-      const answer =
-        document.getElementById("answer")
-        .value
-        .trim()
-        .toLowerCase();
+  </div>
 
-      const res = await fetch(
-        "https://tight-thunder-c72a.emreustaoglu616.workers.dev",
-        {
-          method: "POST",
-
-          headers: {
-            "Content-Type": "application/json"
-          },
-
-          body: JSON.stringify({
-            page: "puzzle1",
-            answer: answer
-          })
-        }
-      );
-
-      const data = await res.json();
-
-      if (data.correct) {
-
-        window.location.href = "puzzle2.html";
-
-      } else {
-
-        document.getElementById("result").innerText =
-          "Transmission rejected.";
-
-      }
-    }
-  </script>
+  <script src="script.js"></script>
 
 </body>
 </html>
