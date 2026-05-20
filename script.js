@@ -45,3 +45,12 @@ async function checkAnswer(pageName, nextPage) {
 
   }
 }
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    const button = document.querySelector("button");
+
+    if (button) {
+      button.click();
+    }
+  }
+});
