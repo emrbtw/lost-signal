@@ -156,3 +156,26 @@ button:active {
     opacity: 1;
   }
 }
+.errorFlash {
+
+  animation: errorFlash 0.45s ease;
+}
+
+@keyframes errorFlash {
+
+  0% {
+    box-shadow: 0 0 40px #00ff8840;
+    border-color: #2cff8f55;
+  }
+
+  25% {
+    box-shadow: 0 0 60px rgba(255, 0, 0, 0.8);
+    border-color: rgba(255, 0, 0, 0.9);
+    background: rgba(60, 0, 0, 0.85);
+  }
+
+  100% {
+    box-shadow: 0 0 40px #00ff8840;
+    border-color: #2cff8f55;
+  }
+}
