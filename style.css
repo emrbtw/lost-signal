@@ -99,3 +99,60 @@ button:hover {
   margin-top: 18px;
   color: #ff6b6b;
 }
+.terminal {
+  animation: fadeIn 0.8s ease-out, flicker 3s infinite;
+}
+
+h1::after {
+  content: "_";
+  animation: blink 1s infinite;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 14px #4cff9a88;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  92% {
+    opacity: 0.96;
+  }
+
+  95% {
+    opacity: 0.9;
+  }
+
+  97% {
+    opacity: 1;
+  }
+}
