@@ -1,42 +1,73 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>1. Kapı</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOST SIGNAL // 01</title>
 </head>
+
 <body>
-  <h1>1. Kapı</h1>
 
-  <p>İlk cevap ne?</p>
+  <h1>LOST SIGNAL // 01</h1>
 
-  <input id="answer" placeholder="Cevabını yaz">
-  <button onclick="checkAnswer()">Gönder</button>
+  <p>
+    At 03:17, the system received a corrupted transmission
+    from an unknown source.
+  </p>
+
+  <pre>
+19 9 7 14 1 12
+  </pre>
+
+  <p>
+    Hint: The numbers are not letters.
+    But they can become letters.
+  </p>
+
+  <input id="answer" placeholder="Enter answer">
+  <button onclick="checkAnswer()">Submit</button>
 
   <p id="result"></p>
 
   <script>
     async function checkAnswer() {
-      const answer = document.getElementById("answer").value;
 
-      const res = await fetch("https://tight-thunder-c72a.emreustaoglu616.workers.dev/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          page: "puzzle1",
-          answer: answer
-        })
-      });
+      const answer =
+        document.getElementById("answer")
+        .value
+        .trim()
+        .toLowerCase();
+
+      const res = await fetch(
+        "https://tight-thunder-c72a.emreustaoglu616.workers.dev",
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type": "application/json"
+          },
+
+          body: JSON.stringify({
+            page: "puzzle1",
+            answer: answer
+          })
+        }
+      );
 
       const data = await res.json();
 
       if (data.correct) {
+
         window.location.href = "puzzle2.html";
+
       } else {
-        document.getElementById("result").innerText = "Yanlış cevap.";
+
+        document.getElementById("result").innerText =
+          "Transmission rejected.";
+
       }
     }
   </script>
+
 </body>
 </html>
