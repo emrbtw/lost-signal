@@ -1,73 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
   <title>LOST SIGNAL // 02</title>
+
+  <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-  <h1>LOST SIGNAL // 02</h1>
+  <div class="terminal">
 
-  <p>
-    First layer decrypted.
-    The second fragment appears heavily encoded.
-  </p>
+    <h1>LOST SIGNAL // 02</h1>
 
-  <pre>
+    <p>
+      First layer decrypted.
+      The second fragment appears heavily encoded.
+    </p>
+
+    <pre>
 Zm91cg==
-  </pre>
+    </pre>
 
-  <p>
-    Hint: This text was not meant to be read directly.
-  </p>
+    <p>
+      Hint: This text was not meant to be read directly.
+    </p>
 
-  <input id="answer" placeholder="Enter answer">
-  <button onclick="checkAnswer()">Submit</button>
+    <input id="answer" placeholder="Enter answer">
 
-  <p id="result"></p>
+    <button onclick="checkAnswer('puzzle2', null)">
+      Submit
+    </button>
 
-  <script>
-    async function checkAnswer() {
+    <p id="result"></p>
 
-      const answer =
-        document.getElementById("answer")
-        .value
-        .trim()
-        .toLowerCase();
+  </div>
 
-      const res = await fetch(
-        "https://tight-thunder-c72a.emreustaoglu616.workers.dev",
-        {
-          method: "POST",
-
-          headers: {
-            "Content-Type": "application/json"
-          },
-
-          body: JSON.stringify({
-            page: "puzzle2",
-            answer: answer
-          })
-        }
-      );
-
-      const data = await res.json();
-
-      if (data.correct) {
-
-        document.getElementById("result").innerText =
-          "FINAL SIGNAL ACCEPTED. Phase 3 is not yet accessible.";
-
-      } else {
-
-        document.getElementById("result").innerText =
-          "Invalid sequence.";
-
-      }
-    }
-  </script>
+  <script src="script.js"></script>
 
 </body>
 </html>
