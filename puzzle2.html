@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>2. Kapı</title>
+</head>
+<body>
+  <h1>2. Kapı</h1>
+
+  <p>Buraya ikinci bulmacayı yazacaksın.</p>
+
+  <input id="answer" placeholder="Cevabını yaz">
+  <button onclick="checkAnswer()">Gönder</button>
+
+  <p id="result"></p>
+
+  <script>
+    async function checkAnswer() {
+      const answer = document.getElementById("answer").value;
+
+      const res = await fetch("https://tight-thunder-c72a.emreustaoglu616.workers.dev/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          page: "puzzle2",
+          answer: answer
+        })
+      });
+
+      const data = await res.json();
+
+      if (data.correct) {
+        document.getElementById("result").innerText = "Doğru. Şimdilik buraya kadar.";
+      } else {
+        document.getElementById("result").innerText = "Yanlış cevap.";
+      }
+    }
+  </script>
+</body>
+</html>
