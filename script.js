@@ -40,8 +40,17 @@ async function checkAnswer(pageName, nextPage) {
 
   } else {
 
-    document.getElementById("result").innerText =
-      "Invalid sequence.";
+   document.getElementById("result").innerText =
+  "Invalid sequence.";
+
+const terminal =
+  document.querySelector(".terminal");
+
+terminal.classList.add("errorFlash");
+
+setTimeout(() => {
+  terminal.classList.remove("errorFlash");
+}, 450);
 
   }
 }
